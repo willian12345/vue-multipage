@@ -1,0 +1,102 @@
+
+.van-address-edit{
+  .van-button--danger{
+    border-color: $color-primary;
+    background: $color-primary;
+  }
+}
+
+
+.van-address-list{
+  .van-button--danger{
+    bottom: calc(env(safe-area-inset-bottom) + 8px);
+    background-color: $color-primary;
+    border-color: $color-primary;
+    display: none;
+  }
+  .van-address-item .van-radio__icon--checked .van-icon{
+    border-color: $color-primary;
+    background: $color-primary;
+  }
+}
+
+
+.van-button--large{
+  border-radius: 22px;
+  .van-button__text{
+    font-size: 18px;
+  }
+}
+.van-button--disabled{
+  color: white;
+  border-color: #DBDBDB;
+  background: #DBDBDB;
+}
+.van-button--normal{
+  padding: 0 16px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+}
+
+
+
+.van-card{
+  padding: 0;
+}
+.van-card__title{
+  font-size: 16px;
+}
+
+
+.van-dialog{
+  border-radius: 12px!important;
+}
+.van-dialog__footer{
+  padding: 0 12px 12px 12px;
+  .van-button--large{
+    background: $color-primary;
+  }
+  .van-button__text{
+    color: white;
+  }
+  &.van-hairline--top::after{
+    display: none;
+  }
+}
+.van-dialog__message--has-title{
+  font-size: 16px!important;
+  color: #999;
+}
+
+
+.van-progress{
+  height: 6px!important;
+}
+.van-progress__pivot{
+  padding: 0!important;
+  box-sizing: content-box!important;
+  width: 6px!important;
+  height: 6px!important;
+  border-radius: 100%!important;
+  overflow: hidden;
+  border: 4px solid $color-primary;
+  background: white!important;
+  min-width: auto!important;
+}
+
+.van-stepper__input{
+  color: #666;
+  background: transparent;
+}
+
+.van-toast{
+  padding: 20px;
+  min-width: 180px;
+  box-sizing: border-box;
+}
+.van-toast__text{
+  margin-top: 12px;
+  font-size: 16px;
+  white-space: nowrap;
+}

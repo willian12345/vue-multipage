@@ -1,0 +1,234 @@
+@import 'reset.scss';
+@import '~@style/vars.scss';
+@import 'icons.scss';
+@import 'recover.scss';
+
+*,
+*:before,
+*:after{
+	box-sizing: border-box;
+}
+[v-cloak]{
+	opacity: 0;
+}
+iframe{
+  display: none;
+}
+html, body{
+  font-size: 14px;
+  line-height: 1;
+  font-family: "PingFangSC-Medium", "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  color: $color-font;
+  background: $color-bg;
+}
+// 注意：如果是native上的webview容器只需要支持darkmode的runtime就可以，就不用考虑兼容处理了。
+// dark mode
+@media (prefers-color-scheme: dark) {
+  html, body{
+    // background: #222;
+    // color: #eee;
+  }
+}
+img{
+  width: 100%;
+}
+$page-max-width: 900px;
+
+a{
+  color: $color-primary;
+}
+
+.link-decorator{
+  text-decoration: underline;
+}
+
+.page{
+  padding: $gutter-basic;
+  max-width: $page-max-width;
+  margin: 0 auto;
+}
+.bottom-cnt-fixed{
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 8px 40px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+  background-color: transparent;
+  &.white{
+    background-color: white;
+  }
+  .bottom-cnt{
+    position: relative;
+    max-width: $page-max-width;
+    margin: 0 auto;
+  }
+}
+.fixed-cnt{
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 8px 40px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+  background-color: transparent;
+  &.white{
+    background-color: white;
+  }
+  .bottom-cnt{
+    position: relative;
+    max-width: $page-max-width;
+    margin: 0 auto;
+  }
+}
+
+.flex-inline{
+  display: inline-flex;
+  align-items: center;
+}
+.flex-row{
+  display: flex;
+  align-items: center;
+  .flex-col, .col{
+    flex: 1;
+  }
+
+}
+.flex-start{
+  align-items: flex-start;
+}
+.flex-end{
+  align-items: flex-end;
+}
+.icon-row{
+  display: flex;
+  align-items: center;
+  .text{
+    flex: 1;
+  }
+}
+
+.center{
+  text-align: center;
+}
+
+.loading-cnt{
+  text-align: center;
+}
+
+$tile-gutter: 16px;
+.tile{
+  margin-bottom: 12px;
+  padding: $tile-gutter;
+  border-radius: $border-radius;
+  background: white;
+  &.tile-radius{
+    border-radius: 16px;
+  }
+  &.tile-form{
+    padding: $tile-gutter 0;
+  }
+  .tile-footer{
+    position: relative;
+    padding-top: $gutter-basic;
+  }
+  .tile-footer::after{
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    border-top: 1px solid #E6E6E6;
+    margin: 0 ($tile-gutter * -2);
+    transform: scale(0.5);
+  }
+  .row{
+    padding-bottom: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    &:last-child{
+      padding-bottom: 0px;
+    }
+    .row-label{
+      font-weight: bold;
+    }
+    .row-value{
+      flex: 1;
+      padding-left: $tile-gutter;
+      color: $color-gray;
+    }
+  }
+}
+.tile-title{
+  padding-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+.tile-gutter-line{
+  padding: 0;
+}
+
+.list{
+  li, .list-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: $gutter-basic;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    .col{
+      flex: 1;
+    }
+  }
+}
+
+.panel{
+  padding-bottom: 8px;
+  .panel-hd{
+    padding-bottom: 8px;
+    .title{
+      padding-left: 20px;
+      font-size: 16px;
+    }
+  }
+}
+
+.bottom-button{
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 0 40px;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 8px);
+}
+
+.figure-cnt{
+  display: flex;
+  align-items: center;
+  .figure{
+    margin-right: 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    overflow: hidden;
+    .img{
+      width: 60px;
+      height: 60px;
+      background-color: #f7f7f7;
+    }
+  }
+  .figure-desc{
+    flex: 1;
+    align-items: center;
+  }
+}

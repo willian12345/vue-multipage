@@ -1,0 +1,21 @@
+// 设计图标准宽度
+$viewWidth: 375px;
+
+// 颜色列表
+$color-bg: rgba(247,247,247,1);
+$color-font: #333;
+$color-gray: #9E9E9E;
+$color-gray1: #BBB;
+$color-gray2: #666;
+$color-primary-deep: #11DDAA;
+$color-primary: #44DDBB;
+$color-font-primary: $color-primary;
+$color-border: #E6E6E6;
+
+$border-radius: 8px;
+$gutter-basic: 12px;
+
+// px 单位转换成 vw
+@function px2vw($px){
+  @return $px / $viewWidth * 100 * 1vw;
+}
