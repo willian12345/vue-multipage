@@ -7,8 +7,6 @@
 import { storeGet, storeSet, mul } from '@assets/js/utils'
 import globalConfig from '@assets/js/config.js'
 import { wxRedirect } from '@assets/js/weixin/weixin'
-import Vue from 'vue';
-import { Dialog } from 'vant'
 
 import { get as LodashGet } from 'lodash-es'
 

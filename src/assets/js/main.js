@@ -13,15 +13,6 @@ Vue.use(axios)
 import { getQueryString } from '@assets/js/utils'
 Vue.prototype.$getQueryString = getQueryString
 
-// 全局注入 部分 vant 组件
-import { Loading, Button, Overlay, Toast, Image as VanImage } from 'vant'
-Vue.use(Loading)
-Vue.use(Button)
-Vue.use(Overlay)
-Vue.use(VanImage);
-
-Vue.prototype.$toast = Toast
-
 // 全局注入dudu-link，用于拦截跳转
 import DuduLink  from '@/components/DuduLink';
 Vue.component('dudu-link', DuduLink)

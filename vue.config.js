@@ -1,9 +1,6 @@
 const path = require('path');//引入path模块
 const fs = require('fs');//引入path模块
 const webpack = require("webpack");
-const sass = require('node-sass');
-
-const GetFileList = require('./plugins/GetFileList')
 
 function resolve(dir){
     return path.join(__dirname,dir)//path.join(__dirname)设置绝对路径
@@ -26,7 +23,7 @@ if(Array.isArray(pages)){
           templateFile = `public/${dirname}.html`
         }
         
-        
+        // 页面特殊属性可在 page.json 内单独配置
         const jsonFile = pagesPath + `/${dirname}/page.json`
         const jsonFileExcist = fs.existsSync(jsonFile)
         let pageJson = {}
@@ -39,8 +36,6 @@ if(Array.isArray(pages)){
           entry: `src/pages/${dirname}/main.js`, // js 入口
           template: templateFile,
           filename: `${dirname}.html`,
-          // 要去掉非app内运行的网页 common.xxx.js 公共文件可以在此修改
-          // chunks: ['chunk-vendors', dirname], 
           ...pageJson
         }
         pageNum++
@@ -82,7 +77,6 @@ module.exports = {
         axios: 'axios',
         'windows.axios': 'axios',
       }),
-      new GetFileList()
     ]
   },
   lintOnSave: false,
@@ -90,15 +84,6 @@ module.exports = {
   pages: multiPages,
   css: {
     loaderOptions: {
-      // 给 less-loader 传递 Less.js 相关选项
-      less:{
-        modifyVars: {
-          // var-vant文件可重置vant默认样式
-          // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-          // 必须在文件中引入全部样式 import 'vant/lib/index.less'; 才能起作用
-          'hack': `true; @import "${resolve('./src/assets/style/var-vant.less')}";`
-        }
-      },
       // @/ 是 src/ 的别名, 引入 vars.scss 变量文件，全局都可以使用不用单独再引入
       sass: {
         data: `@import "~@assets/style/vars.scss";`
