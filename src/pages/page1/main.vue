@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <h1>page2 第一页</h1>
+    <h1>page1 第一页</h1>
   </div>
 </template>
 <script>
