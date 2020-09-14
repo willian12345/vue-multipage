@@ -1,6 +1,5 @@
 /* eslint-disable */
 import globalConfig from './config'
-import ValidatorClass from './ValidatorClass'
 
 // 解析地址栏参数
 export let getQueryString =  function (url){
@@ -16,39 +15,8 @@ export let getQueryString =  function (url){
   
    return result;
 }
-// 防抖
-export let debounce = function(f, wait){
-    let timer
-    return (...args) => {
-        clearTimeout(timer)
-        timer = setTimeout(() => {
-        f(...args)
-        }, wait)
-    }
-}
-// 节流
-export let throttle = function(fn, delay, mustRunDelay){
-    var timer = null;
-    var t_start;
-    return function(){
-        var context = this, args = arguments, t_curr = +new Date();
-        clearTimeout(timer);
-        if(!t_start){
-            t_start = t_curr;
-        }
-        if(t_curr - t_start >= mustRunDelay){
-            fn.apply(context, args);
-            t_start = t_curr;
-        }
-        else {
-            timer = setTimeout(function(){
-                fn.apply(context, args);
-            }, delay);
-        }
-    }
-}
+
 // 日期格式化
-// 
 export let dateFormat = function(date, format){
     var d = new Date(date);
     var o = {
@@ -102,10 +70,6 @@ export let storeSet = function(key, value){
     }
 }
 
-export let toast = function(msg, t){
-    console.log(111);
-}
-
 // 取多少位小数
 export let roundNumber = function (number, decimals, noFixed) {  
     let n = number+''
@@ -122,6 +86,7 @@ export let roundNumber = function (number, decimals, noFixed) {
     }
 }
 
+// 主动复制
 export let copyToClipboard = function (copy_str){
     //创建一个textarea节点
     let textarea = document.createElement('textarea');
@@ -145,38 +110,6 @@ export let copyToClipboard = function (copy_str){
     document.body.removeChild(textarea);
 }
 
-export let formatSeconds = function (value) {
-    var theTime = parseInt(value);// 秒
-    var theTime1 = 0;// 分
-    var theTime2 = 0;// 小时
-    var theTime3 = 0;// 天
-    // alert(theTime);
-    if(theTime > 60) {
-        theTime1 = parseInt(theTime/60);
-        theTime = parseInt(theTime%60);
-        // alert(theTime1+"-"+theTime);
-        if(theTime1 > 60) {
-            theTime2 = parseInt(theTime1/60);
-            theTime1 = parseInt(theTime1%60);
-            if(theTime2 > 24){
-                theTime3 = parseInt(theTime2/24);
-                theTime2 = parseInt(theTime2%24);
-            }
-        }
-    }
-    var result = ""+parseInt(theTime)+"秒";
-    if(theTime1 > 0) {
-        result = ""+parseInt(theTime1)+"分"+result;
-    }
-    if(theTime2 > 0) {
-        result = ""+parseInt(theTime2)+"小时"+result;
-    }
-    if(theTime3 > 0){
-        result = theTime3+ "天"+result;   
-    }
-    return result;
-}
-
 // 是否满足小数点len长度
 export let isFixedToLength = function (v, len) {
     let arr = (v+'').split('.')
@@ -186,112 +119,7 @@ export let isFixedToLength = function (v, len) {
     return true
 }
 
-export let add = function (a, b) {
-    var c, d, e;
-    try {
-        c = a.toString().split(".")[1].length;
-    } catch (f) {
-        c = 0;
-    }
-    try {
-        d = b.toString().split(".")[1].length;
-    } catch (f) {
-        d = 0;
-    }
-    return e = Math.pow(10, Math.max(c, d)), (mul(a, e) + mul(b, e)) / e;
-}
-export let sub = function(a, b) {
-    var c, d, e;
-    try {
-        c = a.toString().split(".")[1].length;
-    } catch (f) {
-        c = 0;
-    }
-    try {
-        d = b.toString().split(".")[1].length;
-    } catch (f) {
-        d = 0;
-    }
-    return e = Math.pow(10, Math.max(c, d)), (mul(a, e) - mul(b, e)) / e;
-}
-export let mul = function (a, b) {
-    var c = 0,
-        d = a.toString(),
-        e = b.toString();
-    try {
-        c += d.split(".")[1].length;
-    } catch (f) {}
-    try {
-        c += e.split(".")[1].length;
-    } catch (f) {}
-    return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
-}
-export let div = function (a, b) {
-    var c, d, e = 0,
-        f = 0;
-    try {
-        e = a.toString().split(".")[1].length;
-    } catch (g) {}
-    try {
-        f = b.toString().split(".")[1].length;
-    } catch (g) {}
-    return c = Number(a.toString().replace(".", "")), d = Number(b.toString().replace(".", "")), mul(c / d, Math.pow(10, f - e));
-}
-
-export let varType = function (n) {
-    var typeStr = Object.prototype.toString.call(n);
-    var typeName = '';
-    switch (typeStr){
-        case '[object String]':
-            typeName = 'string';
-            break;
-        case '[object Number]':
-            typeName = 'number';
-            break;
-        case '[object Boolean]':
-            typeName = 'boolean';
-            break;
-        case '[object Undefined]':
-            typeName = 'undefined';
-            break;
-
-        case '[object Object]':
-            typeName = 'object';
-            break;
-        case '[object Array]':
-            typeName = 'array';
-            break;
-        case '[object Null]':
-            typeName = 'null';
-            break;
-        case '[object RegExp]':
-            typeName = 'RegExp';
-            break;
-
-        case '[object Symbol]':
-            typeName = 'symbol';
-            break;
-        case '[object JSON]':
-            typeName = 'json';
-            break;
-        case '[object Math]':
-            typeName = 'math';
-            break;
-
-        default:
-            typeName = 'object';
-    }
-
-    return typeName;
-}
-
-// 表单验证规则
-export let Validator = {
-    create: (vArr) => {
-        return new ValidatorClass(vArr)
-    }
-}
-
+// 毫秒数转 天-小-时-分-秒
 export let formatDuring =  function (mss) {
     let str = ''
     var days = parseInt(mss / (1000 * 60 * 60 * 24));

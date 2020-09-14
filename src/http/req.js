@@ -4,7 +4,7 @@ import qs from 'qs'
 import md5 from '@assets/js/libs/js-md5/src/md5.js'; 
 import globalConfig from '@assets/js/config.js'
 import config from './config.js'
-import Bridge from '@assets/js/Bridge'
+
 
 let hasErr = false
 let tokenTimeout = false
@@ -22,18 +22,18 @@ const sortFunc = (a, b)=>{
 instance.interceptors.request.use((_config) => {
 	_config.data =_config.data || {}
 	// 数字签名
-	let token = Bridge.getToken()
-	if(!globalConfig.platform.isWeixin){
-		_config.data.token = token
-	}
-	let entries = Object.entries(_config.data)
-	entries = entries.sort(sortFunc)
-	entries = entries.map((v) => {
-		return v.join('=')
-	}).join('&')
-	entries += '&' + globalConfig.secretKey
-	let sign = md5(entries)
-	_config.data.sign = sign
+	// let token = Bridge.getToken()
+	// if(!globalConfig.platform.isWeixin){
+	// 	_config.data.token = token
+	// }
+	// let entries = Object.entries(_config.data)
+	// entries = entries.sort(sortFunc)
+	// entries = entries.map((v) => {
+	// 	return v.join('=')
+	// }).join('&')
+	// entries += '&' + globalConfig.secretKey
+	// let sign = md5(entries)
+	// _config.data.sign = sign
 
   _config.data = qs.stringify(_config.data);
   return _config
@@ -46,8 +46,6 @@ instance.interceptors.response.use((response) => {
 	if(data.code == '1005' && !tokenTimeout){
 		// 登录过期仅需要拦截一次，直接调用 Native 重新授权
 		tokenTimeout = true
-		// 登录过期
-		Bridge.refreshToken()
 	}
 	return data
 }, (err) => { // 状态码不为200	

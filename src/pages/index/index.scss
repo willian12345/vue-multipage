@@ -1,0 +1,13 @@
+@import '~@style/vars.scss';
+.page-list{
+  padding: $gutter-basic;
+}
+.link{
+  display: block;
+  padding: $gutter-basic;
+  color: #333; 
+  font-size: 12px;
+  &:hover{
+    color: $color-primary;
+  }
+}

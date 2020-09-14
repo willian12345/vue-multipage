@@ -1,11 +1,6 @@
 import Vue from 'vue'
 Vue.config.productionTip = false
 
-// 引入单个组件样式
-// import 'vant/lib/button/style/less';
-
-// import '@assets/style/main.scss'
-
 // 需要在全局引入 https://unpkg.com/axios/dist/axios.min.js
 import axios from '@/http/index.js'
 Vue.use(axios)
