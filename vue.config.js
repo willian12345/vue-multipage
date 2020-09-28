@@ -9,6 +9,31 @@ function resolve(dir){
 
 const pagesPath = resolve('./src/pages/')
 const pages = fs.readdirSync(pagesPath)
+/**
+ * 
+ * multiPages 对象最终会在每一页的 htmlWebpackPlugin.options 内读取到以下webpack自带数据， 或 在此自定义的数据
+  {
+    "template": "/Users/xiaodongwang/Documents/vue-multipage/node_modules/html-webpack-plugin/lib/loader.js!/Users/xiaodongwang/Documents/vue-multipage/public/index.html",
+    "filename": "index.html",
+    "hash": false,
+    "inject": true,
+    "compile": true,
+    "favicon": false,
+    "minify": false,
+    "cache": true,
+    "showErrors": true,
+    "chunks": [
+    "chunk-vendors",
+    "chunk-common",
+    "index"
+    ],
+    "excludeChunks": [],
+    "chunksSortMode": "auto",
+    "meta": {},
+    "title": "嘟嘟多页应用demo",
+    "xhtml": false
+  }
+ */
 let multiPages = Object.create({})
 let pageNum = 0
 if(Array.isArray(pages)){
