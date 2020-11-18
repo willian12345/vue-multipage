@@ -7,6 +7,7 @@
       <a href="fullpage.html" class="link">swiper js页</a>
       <a href="virtual-scroll.html" class="link">无限滚动列表</a>
       <a href="video.html" class="link">视频播放器player</a>
+      <a href="createjs.html" class="link">createjs</a>
     </div>
   </div>
 </template>
