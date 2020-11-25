@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import { onBridgeReady } from '@assets/js/weixin/weixin'
+  import { onBridgeReady } from '@/assets/js/weixin/weixin'
   export default {
     name: 'player',
     data () {

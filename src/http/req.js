@@ -1,8 +1,8 @@
 import axios from 'axios'
 // 为减小打包后的体积在 vue.config.js 中已经配置 webpack 全局引入 axios
 import qs from 'qs'
-import md5 from '@assets/js/libs/js-md5/src/md5.js'; 
-import globalConfig from '@assets/js/config.js'
+import md5 from '@/assets/js/libs/js-md5/src/md5.js'; 
+import globalConfig from '@/assets/js/config.js'
 import config from './config.js'
 
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import '@/assets/js/main'
-import '@assets/style/main.scss'
+import '@/assets/style/main.scss'
 import './page1.scss'
 
 new Vue({

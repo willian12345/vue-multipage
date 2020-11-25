@@ -71,12 +71,7 @@ if(Array.isArray(pages)){
 module.exports = {
   chainWebpack:(config)=>{
     config.resolve.alias
-    .set('@',resolve('./src'))
-    .set('@components',resolve('./src/components'))
-    .set('@assets', resolve('./src/assets'))
-    .set('@style',resolve('./src/assets/style'))
-    .set('@img',resolve('./src/assets/img'))
-    .set('@js', resolve('./src/assets/js'))
+    .set('@/',resolve('src/*'))
     // 多页配置 公共资源提取，
     // vendors提取的是第三方公共库(满足提取规则的node_modules里面的且页面引入的)，这些文件会打到dist/js/chunk-vendors.js里面
     // 提取规则是每个页面都引入的才会打到chunk-vendors.js里面(如vue.js)
@@ -111,7 +106,7 @@ module.exports = {
     loaderOptions: {
       // @/ 是 src/ 的别名, 引入 vars.scss 变量文件，全局都可以使用不用单独再引入
       sass: {
-        data: `@import "~@assets/style/vars.scss";`
+        data: `@import "~@/assets/style/vars.scss";`
       }
     }
   }
