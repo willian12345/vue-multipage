@@ -1,8 +1,10 @@
 import axios from '@/http/req.js'
 import globalConfig from '@/assets/js/config'
+import { storeGet, storeSet, getQueryString } from '@/assets/js/utils.js'
+const redirectURL = globalConfig.basePageURL 
 // 微信签名服务成功返回的数据
 let signed = null
-
+let openId = ''
 // 微信注入 sdk ready 函数
 export let onBridgeReady = function(cb) {
     if (typeof WeixinJSBridge == "undefined"){
@@ -112,5 +114,30 @@ export const wxRedirect = function(callbackUrl) {
     const url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${globalConfig.WEIXIN_MP_APP_ID}&redirect_uri=${callbackUrl}&response_type=code&scope=snsapi_base&state=123#wechat_redirect`
     if(globalConfig.platform.isWeixin){
         window.location.href = url
+    }
+}
+
+export const wxGetOpenId = async function(init){
+    const query = getQueryString()
+    const openId = storeGet('wx_openId', true)
+    // 如果本地存有 openId 则认为已经登录
+    if(openId){
+        init && init()
+    }else{
+        // 需要重新微信授权登录
+        // 如果地址栏有 code 说明是微信授权成功后跳转回来的，拿 code 去服务端 openId
+        if(query.code){
+            const res = await axios.post('wxgzh/getOpenId', {code: query.code})
+            if(res.code === '0'){
+                openId = res.data
+                storeSet('wx_openId', this.openId)
+                init && init()
+            }else{
+                wxRedirect(redirectURL)
+            }
+        }else{
+            // 没有 openId 也没有 code 直接跳微信去授权拿 code 
+            wxRedirect(redirectURL)
+        }
     }
 }

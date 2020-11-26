@@ -7,7 +7,7 @@
 <script>
 import globalConfig from '@/assets/js/config'
 import { getQueryString } from '@/assets/js/utils.js'
-import { wxGetSign, wxSetShare } from '@/assets/js/weixin/weixin'
+import { wxSetShare } from '@/assets/js/weixin/weixin'
 import Json from './device.json'
 
 export default {
