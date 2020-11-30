@@ -8,6 +8,7 @@
       <a href="virtual-scroll.html" class="link">无限滚动列表</a>
       <a href="video.html" class="link">视频播放器player</a>
       <a href="createjs.html" class="link">createjs</a>
+      <a href="spa.html" class="link">SPA多页中的单页应用</a>
     </div>
   </div>
 </template>
