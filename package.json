@@ -1,7 +1,7 @@
 {
-  "name": "dudu-app",
+  "name": "dudu-vue-multipage",
   "version": "0.1.0",
-  "private": true,
+  "description": "dudu-vue-m 嘟嘟 vue 多页应用脚手架",
   "scripts": {
     "serve": "vue-cli-service serve --mode serve --open --copy",
     "debug": "vue-cli-service serve --mode debug --open --copy",
