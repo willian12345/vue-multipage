@@ -1,7 +1,9 @@
+/**
+ * 全局 main 所有页面都需要先引用此文件
+ */
 import Vue from 'vue'
 Vue.config.productionTip = false
 
-// 需要在全局引入 https://unpkg.com/axios/dist/axios.min.js
 import axios from '@/http/index.js'
 Vue.use(axios)
 
@@ -25,10 +27,3 @@ Vue.filter ("dateFormat", ( d, f ) => {
     return dateFormat( d, f )
   }
 })
-
-
-// 暗黑模式
-// if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//   // dark mode do something
-// }
-

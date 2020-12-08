@@ -12,7 +12,7 @@
   import VirtualList from 'vue-virtual-scroll-list'
 
   export default {
-    name: 'root',
+    name: 'virtualScroll',
     data () {
       return {
         itemComponent: Item,

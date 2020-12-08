@@ -1,8 +1,8 @@
+/**
+ * 统一全局请求
+ */
 import axios from 'axios'
-// 为减小打包后的体积在 vue.config.js 中已经配置 webpack 全局引入 axios
 import qs from 'qs'
-import md5 from '@/assets/js/libs/js-md5/src/md5.js'; 
-import globalConfig from '@/assets/js/config.js'
 import config from './config.js'
 
 
@@ -21,20 +21,6 @@ const sortFunc = (a, b)=>{
 
 instance.interceptors.request.use((_config) => {
 	_config.data =_config.data || {}
-	// 数字签名
-	// let token = Bridge.getToken()
-	// if(!globalConfig.platform.isWeixin){
-	// 	_config.data.token = token
-	// }
-	// let entries = Object.entries(_config.data)
-	// entries = entries.sort(sortFunc)
-	// entries = entries.map((v) => {
-	// 	return v.join('=')
-	// }).join('&')
-	// entries += '&' + globalConfig.secretKey
-	// let sign = md5(entries)
-	// _config.data.sign = sign
-
   _config.data = qs.stringify(_config.data);
   return _config
 }, function(error) {
