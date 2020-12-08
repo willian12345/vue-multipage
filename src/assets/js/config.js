@@ -19,7 +19,7 @@ const APP_PREFIX = `Duduapp_${appEvn}_`
 // 微信公众号 appid
 const WEIXIN_MP_APP_ID = 'xxxx'
 
-// 微信开放标签唤起嘟嘟 app ,此 appid 为微信公众号内填写的嘟嘟 appid
+// 微信开放标签唤起嘟嘟 appid 微信开放平台 客户端创建应用时的appId https://open.weixin.qq.com/ 
 const WEIXIN_APP_ID = 'xxxx'
 
 const YING_YONG_BAO = 'https://a.app.qq.com/o/simple.jsp?pkgname=ai.waychat.yogo'
