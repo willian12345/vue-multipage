@@ -27,9 +27,8 @@ const YING_YONG_BAO = 'https://a.app.qq.com/o/simple.jsp?pkgname=ai.waychat.yogo
 switch (appEvn) {
   case 'serve':
     baseURL = 'http://192.168.6.161:7003/yogoapi/'  //这里是本地的请求url
-    // baseURL = 'http://192.168.61.172:7003/yogoapi/'  //这里是本地的请求url
-    baseFileURL = 'https://yogo-file-test.oss-cn-hangzhou.aliyuncs.com/img/'
-    basePageURL = 'http://192.168.63.120:8080'
+    baseFileURL = 'https://yogo-file-test.oss-cn-hangzhou.aliyuncs.com/img/' // 文件类地址
+    basePageURL = 'http://192.168.63.120:8080' // 网页 html 地址
     secretKey = 'abc'
     break
   case 'alpha': case 'debug': 

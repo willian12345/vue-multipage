@@ -5,21 +5,10 @@ import axios from 'axios'
 import qs from 'qs'
 import config from './config.js'
 
-
-let hasErr = false
-let tokenTimeout = false
-
 const instance = axios.create(config)
-const sortFunc = (a, b)=>{
-	if(a[0] > b[0]){
-		return 1
-	}else if(a[0] < b[0]){
-		return -1
-	}
-	return 0
-}
 
 instance.interceptors.request.use((_config) => {
+	// 此处可根据业务需求封装发送至服务器时的数据
 	_config.data =_config.data || {}
   _config.data = qs.stringify(_config.data);
   return _config
@@ -28,11 +17,8 @@ instance.interceptors.request.use((_config) => {
 })
 
 instance.interceptors.response.use((response) => {
+	// 此处可根据业务需求过滤服务端返回的数据
 	const data = response.data
-	if(data.code == '1005' && !tokenTimeout){
-		// 登录过期仅需要拦截一次，直接调用 Native 重新授权
-		tokenTimeout = true
-	}
 	return data
 }, (err) => { // 状态码不为200	
 	if (err && err.response) {
@@ -84,11 +70,7 @@ instance.interceptors.response.use((response) => {
 			default:
 		}
 	}
-	// 确保一次只出现一条网络通信错误提示信息
-	if(!hasErr){
-		hasErr = true
-	}
-	
+
 	return Promise.reject(err)
 })
 export default instance

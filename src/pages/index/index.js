@@ -20,8 +20,6 @@ export default {
     
   },
   mounted () {
-    var x = new Big(0.3)
-    let a = x.minus(0.1)
-    console.log(a)
+    
   },
 }
