@@ -12,7 +12,7 @@
   "dependencies": {
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "big.js": "^5.2.2",
     "lodash-es": "^4.17.15",
     "swiper": "^5.4.2",
