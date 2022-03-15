@@ -14,7 +14,7 @@
     "@vue/babel-preset-jsx": "^1.1.2",
     "axios": "^0.19.2",
     "big.js": "^5.2.2",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "swiper": "^5.4.2",
     "vue": "^2.6.10",
     "vue-awesome-swiper": "^4.1.1",
